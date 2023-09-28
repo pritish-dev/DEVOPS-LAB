@@ -1,0 +1,20 @@
+# kubernetes-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: yourapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: yourapp
+  template:
+    metadata:
+      labels:
+        app: yourapp
+    spec:
+      containers:
+        - name: yourapp
+          image: pritish2023/devlab:${BUILD_NUMBER} # Replace with your Docker Hub image
+          ports:
+            - containerPort: 5000
